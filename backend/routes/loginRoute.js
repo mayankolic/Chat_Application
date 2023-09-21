@@ -28,7 +28,7 @@ router.post("/login", async (req, res) => {
           res.cookie("jwt", token, {
             maxAge: maxAge * 1000,
           });
-          res.redirect("/");
+          res.redirect("/chatbox");
         } else {
           errors.push({
             message: "Password is Incorrect",

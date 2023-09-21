@@ -36,7 +36,7 @@ io.on("connection", (socket) => {
   });
 
   socket.on("disconnect", (message) => {
-    socket.broadcast.emit("left", user[socket.id]);
+    socket.broadcast.emit(["left", user[socket.id]]);
     delete user[socket.id];
   });
 });

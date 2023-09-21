@@ -3,8 +3,10 @@ const socket = io("http://localhost:8000", { transports: ["websocket"] });
 const form = document.getElementById("send-container");
 
 const messageInput = document.getElementById("messageInp");
+//the message we need to send
 
 const messageContainer = document.querySelector(".container");
+//here new messages will be added to the container
 
 var audio = new Audio("tone.mp3");
 
@@ -26,7 +28,7 @@ form.addEventListener("submit", (e) => {
   socket.emit("send", message);
   messageInput.value = "";
 });
-const Name = name;
+// const Name = name;
 socket.emit("new-user-joined", Name);
 
 socket.on("user-joined", (Name) => {

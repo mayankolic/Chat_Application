@@ -13,5 +13,10 @@ userSchema.pre("save", async function (next) {
   this.password = await bcrypt.hash(this.password, salt);
   next();
 });
+userSchema.methods.generateAuthToken = async function () {
+	const user = this
+	const token = await jwt.sign({ _id: user._id.toString() }, 'thisisnewcourse')
+	return token;
+}
 const User = mongoose.model("User", userSchema);
 module.exports = User;
